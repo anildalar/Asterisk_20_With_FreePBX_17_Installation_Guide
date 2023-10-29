@@ -1,11 +1,8 @@
 # Asterisk_21_Installation_Guide
 Asterisk_21_Installation_Guide
 <pre>
-
-  docker run -u root --privileged -it -d -p 5060:5060/tcp -p 5060:5060/udp --name asterisk ubuntu:latest
-
-docker exec -it asterisk bash
-
+docker run -u root --privileged -it -d -p 5060:5060/tcp -p 5060:5060/udp --name astrisk ubuntu:latest
+docker container exec -it astrisk bash
 
 
 sudo apt-get update -y
@@ -64,14 +61,84 @@ sudo systemctl start asterisk
 or
 service asterisk start
 
+
+cat /etc/asterisk
+vim pjsip.conf
+Add 2 sip client
+;================================
+;Aaron Courtney
+;Accounting and Records
+
+[1106](endpoint-internal-d70)
+auth = 1106
+aors = 1106
+callerid = 1106
+
+[1106](auth-userpass)
+password = 1106
+username = 1106
+
+[1106](aor-single-reg)
+mailboxes = 1106@example
+max_contacts=5 ; Adjust the maximum contacts to a higher numbe
+
+;================================ SALES STAFF ==
+
+;================================
+;Garnet Claude
+;Sales Associate
+
+[1105](endpoint-internal-d70)
+auth = 1105
+aors = 1105
+callerid = 1105
+
+[1105](auth-userpass)
+password = 1105
+username = 1105
+
+[1105](aor-single-reg)
+mailboxes = 1105@example
+max_contacts=5 ; Adjust the maximum contacts to a higher numbe
+;================================
+
+
+
 sudo asterisk -vvvr
 or
 asterisk -vrrr
+
+pjsip set logger on
+
+
+exit
+
+
+
+vim extensions.conf
+[from-internal]
+exten => 1105,1,Answer()
+same => n,Playback(welcome)
+same => n,Hangup()
+
+exten => 1106,1,Answer()
+same => n,Playback(welcome)
+same => n,Hangup()
+
+
+service asterisk restart
+systemctl status asterisk
+
+asterisk -rx 'dialplan reload'
+
+
+
 
 
 sudo ufw allow 5060/udp
 
 sudo ufw allow 10000:20000/udp
+
 
 
 </pre>
