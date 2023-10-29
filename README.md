@@ -2,9 +2,9 @@
 Asterisk_21_Installation_Guide
 <pre>
 
-  docker run -u root --privileged -it -d -p 5060:5060/tcp -p 5060:5060/udp ubuntu:latest
+  docker run -u root --privileged -it -d -p 5060:5060/tcp -p 5060:5060/udp --name asterisk ubuntu:latest
 
-docker exec -it <contName> bash
+docker exec -it asterisk bash
 
 
 
