@@ -5,7 +5,8 @@ docker run -u root --privileged -it -d -p 5060:5060/tcp -p 5060:5060/udp --name 
 docker container exec -it astrisk bash
 
 
-sudo apt-get update -y
+apt-get update -y
+apt install sudo -y
 sudo apt-get upgrade -y
 
 
