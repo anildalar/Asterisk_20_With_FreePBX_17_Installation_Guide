@@ -50,7 +50,16 @@ AST_GROUP="asterisk"
 
 ESC : WQ enter
 
+vim /etc/asterisk/asterisk.conf
+uncomment 
+runuser = asterisk
+rungroup = asterisk
+	
+ESC : WQ enter
+
 sudo usermod -a -G dialout,audio asterisk
+
+	
 
 sudo chown -R asterisk: /var/{lib,log,run,spool}/asterisk /usr/lib/asterisk /etc/asterisk
 sudo chmod -R 750 /var/{lib,log,run,spool}/asterisk /usr/lib/asterisk /etc/asterisk
@@ -159,6 +168,13 @@ core reload
 sudo ufw allow 5060/udp
 
 sudo ufw allow 10000:20000/udp
+
+---------------------------------------------------- FREE PBX --------------------------------------------------------------------
+apt-get install apache2 mariadb-server libapache2-mod-php php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-bcmath php-zip php-xml php-imap php-json php-snmp -y
+
+wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-17.0-latest.tgz
+tar -xvzf freepbx-17.0-latest.tgz
+rm -rf freepbx-17.0-latest.tgz
 
 
 
