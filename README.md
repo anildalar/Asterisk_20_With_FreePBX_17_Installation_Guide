@@ -105,15 +105,16 @@ max_contacts=5 ; Adjust the maximum contacts to a higher numbe
 
 
 
+
 sudo asterisk -vvvr
 or
 asterisk -vrrr
 
 pjsip set logger on
+pjsip show registrations
 
 
 exit
-
 
 
 vim extensions.conf
