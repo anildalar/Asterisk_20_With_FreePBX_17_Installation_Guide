@@ -13,8 +13,8 @@ sudo apt install -y software-properties-common build-essential zlib1g-dev libncu
 
 cd /usr/src/
 
-sudo wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-21-current.tar.gz
-sudo tar zxf asterisk-21-current.tar.gz
+sudo wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz
+sudo tar zxf asterisk-20-current.tar.gz
 
 cd asterisk-*/
 
