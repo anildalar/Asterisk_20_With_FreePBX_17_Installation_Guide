@@ -134,7 +134,27 @@ asterisk -rx 'dialplan reload'
 
 
 
+Execute with going inside CLI
 
+asterisk -rx 'core restart when convenient'
+
+asterisk -rx 'dialplan reload'
+asterisk -rx 'module reload res_pjsip.so'
+
+asterisk -rx 'pjsip show registrations'
+
+asterisk -rx 'core restart now'
+
+asterisk -rx 'pjsip show endpoints'
+
+asterisk -rx 'pjsip reload'
+
+GO inside Asterisk CLI
+asterisk -r
+pjsip show registrations
+
+module show like sip
+core reload
 
 sudo ufw allow 5060/udp
 
