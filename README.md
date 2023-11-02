@@ -1,8 +1,8 @@
 # Asterisk_21_Installation_Guide
 Asterisk_21_Installation_Guide
 <pre>
-docker run -u root --privileged -it -d -p 5060:5060/tcp -p 5060:5060/udp --name astrisk ubuntu:latest
-docker container exec -it astrisk bash
+docker run -u root --privileged -it -d -p 80:80 -p 5060:5060/tcp -p 5060:5060/udp -p 5160:5160/udp -p 5160:5160/tcp -p 18000-18100:18000-18100/udp --name astrisk_freepbx ubuntu:latest
+docker container exec -it astrisk_freepbx bash
 
 
 apt-get update -y
@@ -54,7 +54,8 @@ vim /etc/asterisk/asterisk.conf
 uncomment 
 runuser = asterisk
 rungroup = asterisk
-	
+
+
 ESC : WQ enter
 
 sudo usermod -a -G dialout,audio asterisk
@@ -64,10 +65,6 @@ sudo usermod -a -G dialout,audio asterisk
 sudo chown -R asterisk: /var/{lib,log,run,spool}/asterisk /usr/lib/asterisk /etc/asterisk
 sudo chmod -R 750 /var/{lib,log,run,spool}/asterisk /usr/lib/asterisk /etc/asterisk
 
-sudo systemctl enable asterisk
-
-sudo systemctl start asterisk
-or
 service asterisk start
 
 
@@ -192,8 +189,19 @@ astlogdir => /var/log/asterisk
 
 Save n Exit
 
+service mariadb status
+
 cd freepbx
 apt-get install nodejs npm -y
 sudo ./install -n
+
+
+sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/apache2/apache2.conf
+sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php/8.1/apache2/php.ini
+sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php/8.1/cli/php.ini
+
+a2enmod rewrite
+service apache2 start
 
 </pre>
