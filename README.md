@@ -63,7 +63,7 @@ or
 service asterisk start
 
 
-cat /etc/asterisk
+cd /etc/asterisk
 vim pjsip.conf
 Add 2 sip client
 ;================================
