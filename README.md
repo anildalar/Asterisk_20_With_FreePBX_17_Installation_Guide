@@ -176,6 +176,24 @@ wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-17.0-latest.tgz
 tar -xvzf freepbx-17.0-latest.tgz
 rm -rf freepbx-17.0-latest.tgz
 
+vim /etc/asterisk/asterisk.conf
+Add at the end of file
+[directories]
+astetcdir => /etc/asterisk
+astmoddir => /usr/lib/asterisk/modules
+astvarlibdir => /var/lib/asterisk
+astdbdir => /var/lib/asterisk
+astkeydir => /var/lib/asterisk
+astdatadir => /var/lib/asterisk
+astagidir => /var/lib/asterisk/agi-bin
+astspooldir => /var/spool/asterisk
+astrundir => /var/run/asterisk
+astlogdir => /var/log/asterisk
 
+Save n Exit
+
+cd freepbx
+apt-get install nodejs npm -y
+sudo ./install -n
 
 </pre>
