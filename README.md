@@ -9,7 +9,7 @@ apt-get update -y
 apt install sudo -y
 sudo apt-get upgrade -y
 
-sudo apt install -y software-properties-common build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev python3-full python3-pip zip unzip wget vim nano git-core subversion wget libjansson-dev sqlite autoconf automake libxml2-dev libncurses5-dev libtool
+sudo apt install -y software-properties-common build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev python3-full python3-pip zip unzip wget vim nano git-core subversion wget libjansson-dev sqlite autoconf automake libxml2-dev libncurses5-dev libtool apache2 mariadb-server libapache2-mod-php php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-bcmath php-zip php-xml php-imap php-json php-snmp
 
 cd /usr/src/
 
@@ -167,7 +167,7 @@ sudo ufw allow 5060/udp
 sudo ufw allow 10000:20000/udp
 
 ---------------------------------------------------- FREE PBX --------------------------------------------------------------------
-apt-get install apache2 mariadb-server libapache2-mod-php php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-bcmath php-zip php-xml php-imap php-json php-snmp -y
+
 
 wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-17.0-latest.tgz
 tar -xvzf freepbx-17.0-latest.tgz
