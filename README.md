@@ -197,7 +197,8 @@ sudo apt-get update
 sudo apt-get install --reinstall cron
 
 sudo ./install -n
-
+fwconsole ma downloadinstall certman
+fwconsole ma install pm2
 
 sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/apache2/apache2.conf
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
