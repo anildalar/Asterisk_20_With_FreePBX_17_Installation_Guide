@@ -278,4 +278,6 @@ service apache2 start
 
 
 http://localhost:8080/admin
+
+docker run -u root --privileged -it -d -p 8080:80 -p 5060:5060/tcp -p 5060:5060/udp -p 5160:5160/udp -p 5160:5160/tcp -p 18000-18100:18000-18100/udp -p 8088:8088 -p 8089:8089 --name asterisk oklabs/asterisk:v21_t2
 </pre>
