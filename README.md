@@ -153,7 +153,6 @@ asterisk -rx 'core restart now'
 
 asterisk -rx 'pjsip show endpoints'
 
-asterisk -rx 'pjsip reload'
 
 GO inside Asterisk CLI
 asterisk -r
