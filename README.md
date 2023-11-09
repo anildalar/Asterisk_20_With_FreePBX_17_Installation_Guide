@@ -166,6 +166,74 @@ sudo ufw allow 5060/udp
 
 sudo ufw allow 10000:20000/udp
 
+-------------------------------------------------- WebSockets ---------------------------------------------------------------------
+sudo mkdir -p /etc/asterisk/keys
+cd /usr/src/asterisk-20.5.0/contrib/scripts
+./ast_tls_cert -C pbx.example.com -O "My Organization" -b 2048 -d /etc/asterisk/keys
+
+Type password
+
+cd /etc/asterisk/keys
+ls -al
+
+/etc/asterisk/keys/asterisk.pem
+
+vim /etc/asterisk/http.conf
+[general]
+enabled=yes
+bindaddr=0.0.0.0
+bindport=8088
+tlsenable=yes
+tlsbindaddr=0.0.0.0:8089
+tlscertfile=/etc/asterisk/keys/asterisk.crt
+tlsprivatekey=/etc/asterisk/keys/asterisk.key
+ESC :wq
+
+vim /etc/asterisk/pjsip.conf
+[transport-wss]
+type=transport
+protocol=wss
+bind=0.0.0.0
+; All other transport parameters are ignored for wss transports.
+
+vim /etc/asterisk/pjsip.conf
+
+[webrtc_client]
+type=aor
+max_contacts=5
+remove_existing=yes
+
+[webrtc_client]
+type=auth
+auth_type=userpass
+username=webrtc_client
+password=webrtc_client ; This is a completely insecure password! Do NOT expose this 
+ ; system to the Internet without utilizing a better password.
+
+[webrtc_client]
+type=endpoint
+aors=webrtc_client
+auth=webrtc_client
+dtls_auto_generate_cert=yes
+webrtc=yes
+; Setting webrtc=yes is a shortcut for setting the following options:
+; use_avpf=yes
+; media_encryption=dtls
+; dtls_verify=fingerprint
+; dtls_setup=actpass
+; ice_support=yes
+; media_use_received_transport=yes
+; rtcp_mux=yes
+context=default
+disallow=all
+allow=opus,ulaw
+
+
+
+asterisk -vrrr
+
+http show status
+
 ---------------------------------------------------- FREE PBX --------------------------------------------------------------------
 
 
