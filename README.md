@@ -9,7 +9,7 @@ apt-get update -y
 apt install sudo -y
 sudo apt-get upgrade -y
 
-sudo apt install -y linux-headers-$(uname -r) software-properties-common build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev python3-full python3-pip zip unzip wget vim nano git-core subversion libjansson-dev sqlite autoconf automake libxml2-dev libncurses5-dev libtool apache2 mariadb-server libapache2-mod-php php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-bcmath php-zip php-xml php-imap php-json php-snmp
+sudo apt install -y software-properties-common build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev python3-full python3-pip zip unzip wget vim nano git-core subversion libjansson-dev sqlite autoconf automake libxml2-dev libncurses5-dev libtool apache2 mariadb-server libapache2-mod-php php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-bcmath php-zip php-xml php-imap php-json php-snmp
 
 cd /usr/src/
 
